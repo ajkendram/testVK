@@ -22,7 +22,7 @@ public class Park {
         }
     }
 
-    // Публичный метод для создания и вывода информации об аттракционах
+    //  Метод для создания и вывода информации об аттракционах
     public void createAndShowAttractions() {
         Attraction rollerCoaster = new Attraction("Roller Coaster", "10:00 - 18:00", 20.0);
         Attraction ferrisWheel = new Attraction("Ferris Wheel", "09:00 - 20:00", 15.0);
@@ -35,9 +35,4 @@ public class Park {
         hauntedHouse.printInfo();
     }
 
-    public void createAndShowAttractionsMLEEE() {
-        System.out.println("MlEEEEE ");
-
-
-    }
 }
