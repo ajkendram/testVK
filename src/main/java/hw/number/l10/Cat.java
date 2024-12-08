@@ -15,7 +15,7 @@ public class Cat extends Animal {
     }
 
     public static int getCount() {
-        return count;
+       // return count;
     }
 
     @Override
