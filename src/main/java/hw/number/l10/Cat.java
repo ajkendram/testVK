@@ -18,13 +18,29 @@ public class Cat extends Animal {
         countCat++;
     }
 
-    public int getHungry() {
-        return hungry;
+    public String getName() {
+        return name;
+    }
+
+    public boolean isFull() {
+        return isFull;
     }
 
     public static int getCount() {
         return countCat;
     }
+
+
+    public void eat(Bowl bowl) {
+        if (bowl.getFood() >= hungry) {
+            bowl.decreaseFood(hungry);
+            isFull = true;
+        } else {
+            System.out.println(name + " не смог покушать, недостаточно еды.");
+        }
+    }
+
+
 
     @Override
     public void run(int distance) {
@@ -41,11 +57,8 @@ public class Cat extends Animal {
 
     }
 
-    public void eat(int miska, int hungry) {
 
-        System.out.println("Кот "+ hungry +" в миске " + miska);
 
-    }
 
 
 }

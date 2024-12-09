@@ -10,16 +10,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int miska = 7;
-
-        Cat[] cat = new Cat[5];
-        Dog[] dog = new Dog[5];
 
 
-        cat[0] = new Cat("catVK0", 0,  20);
-        cat[1] = new Cat("catVK1", 0,  20);
-        cat[2] = new Cat("catVK2", 0,  20);
-        cat[3] = new Cat("catVK3", 0,  20);
+        Cat[] cat = new Cat[4];
+        Dog[] dog = new Dog[4];
+
+
+        cat[0] = new Cat("catVK0", 2,  20);
+        cat[1] = new Cat("catVK1", 3,  20);
+        cat[2] = new Cat("catVK2", 4,  20);
+        cat[3] = new Cat("catVK3", 5,  20);
 
         cat[0].run(192);
         cat[1].run(12);
@@ -44,10 +44,51 @@ public class Main {
 
         System.out.println("Котов = " + countCat);
         System.out.println("Собак = " + countDog);
+        int all =  countCat + countDog;
+        System.out.println("Животных = " + all);
 
 
-        cat[0].eat(miska, cat[0].getHungry());
 
+        System.out.println();
+
+
+
+        Bowl bowl = new Bowl(5);
+        System.out.println("Еды в миске: " + bowl.getFood());
+        System.out.println();
+
+
+
+        // Коты едят
+        for (int i = 0; i < cat.length; i++) {
+            cat[i].eat(bowl);
+            System.out.println(cat[i].getName() + " сытость: " + cat[i].isFull());
+            System.out.println("Еды в миске: " + bowl.getFood());
+            System.out.println();
+
+
+        }
+
+        System.out.println();
+
+        // Добавляем еду в миску
+        bowl.addFood(10);
+        System.out.println("Добавили, стало еды в миске: " + bowl.getFood());
+
+        System.out.println();
+
+
+        // Повторная попытка покушать
+        for (int i = 0; i < cat.length; i++) {
+            if (!cat[i].isFull()) {
+                cat[i].eat(bowl);
+                System.out.println(cat[i].getName() + " сытость: " + cat[i].isFull());
+                System.out.println("Еды в миске: " + bowl.getFood());
+                System.out.println();
+
+
+            }
+        }
 
     }
 }
