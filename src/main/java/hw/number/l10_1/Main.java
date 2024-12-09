@@ -76,7 +76,7 @@ public class Main {
         System.out.println();
 
 
-        // Повторная попытка покушать
+        // Повторная попытка
         for (int i = 0; i < cat.length; i++) {
             if (!cat[i].isFull()) {
                 cat[i].eat(bowl);
