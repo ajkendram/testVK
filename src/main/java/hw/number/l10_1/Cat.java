@@ -1,4 +1,4 @@
-package hw.number.l10;
+package hw.number.l10_1;
 
 public class Cat extends Animal {
 
@@ -8,7 +8,6 @@ public class Cat extends Animal {
     static int countCat = 0;
     private boolean isFull;
 
-    //public int miska = 6;
 
     public Cat(String name, int hungry, int swimM) {
         this.name = name;

@@ -1,10 +1,8 @@
-package hw.number.l10;
+package hw.number.l10_1;
 
 
-import hw.number.l6.Employee;
-
-import static hw.number.l10.Cat.countCat;
-import static hw.number.l10.Dog.countDog;
+import static hw.number.l10_1.Cat.countCat;
+import static hw.number.l10_1.Dog.countDog;
 
 public class Main {
 

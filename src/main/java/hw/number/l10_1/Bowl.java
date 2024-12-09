@@ -1,4 +1,4 @@
-package hw.number.l10;
+package hw.number.l10_1;
 
 public class Bowl {
 
