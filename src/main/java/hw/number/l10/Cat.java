@@ -3,31 +3,49 @@ package hw.number.l10;
 public class Cat extends Animal {
 
     private String name;
-    private int jumpM;
+    private int hungry;
     private int swimM;
+    static int countCat = 0;
+    private boolean isFull;
 
-    public Cat(String name, int jumpM, int swimM) {
+    //public int miska = 6;
+
+    public Cat(String name, int hungry, int swimM) {
         this.name = name;
-        this.jumpM = jumpM;
+        this.hungry = hungry;
         this.swimM = swimM;
-        int count = 0;
-        count++;
+
+        countCat++;
+    }
+
+    public int getHungry() {
+        return hungry;
     }
 
     public static int getCount() {
-       // return count;
+        return countCat;
     }
 
     @Override
     public void run(int distance) {
-        System.out.println("Кот пробежал " + distance + " м.");
+        if (distance<=200) {
+            System.out.println("Кот "+ name +" пробежал " + distance + " м.");
+        }
+        else System.out.println("Кот "+ name +" НЕ пробежал " + distance + " м.");
     }
+
 
     @Override
     public void swim(int distance) {
-
-
-
+        System.out.println("Кот "+ name +" НЕ поплывет " + distance + " м.");
 
     }
+
+    public void eat(int miska, int hungry) {
+
+        System.out.println("Кот "+ hungry +" в миске " + miska);
+
+    }
+
+
 }
