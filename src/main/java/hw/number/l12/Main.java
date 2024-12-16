@@ -10,9 +10,12 @@ public class Main {
                 {"13", "14", "15", "16"}
         };
 
-        int sum = ArrayStr.sumArrayElements(myArray);
-        System.out.println("Сумма всех элементов массива: " + sum);
 
-
+        try {
+            int sum = ArrayStr.sumArrayElements(myArray);
+            System.out.println("Сумма всех элементов массива: " + sum);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

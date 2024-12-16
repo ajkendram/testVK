@@ -2,16 +2,21 @@ package hw.number.l12;
 
 public class ArrayStr {
 
+    public static int sumArrayElements(String[][] array) throws MyArraySizeException, MyArrayDataException {
+        if (array.length != 4 || array[0].length != 4) {
+            throw new MyArraySizeException("Массив должен быть размером 4x4");
+        }
 
-
-    public static int sumArrayElements(String[][] array) {
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                sum += Integer.parseInt(array[i][j]);
+                try {
+                    sum += Integer.parseInt(array[i][j]);
+                } catch (NumberFormatException e) {
+                    throw new MyArrayDataException("Неверные данные в ячейке [" + i + "][" + j + "]: " + array[i][j]);
+                }
             }
         }
         return sum;
     }
-
-        }
+}
