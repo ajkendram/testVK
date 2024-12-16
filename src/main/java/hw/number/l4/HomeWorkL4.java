@@ -1,28 +1,11 @@
-package org.example;
+package hw.number.l4;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        printThreeWords();
-        checkSumSign();
-        printColor();
-        compareNumber();
-        task5Summ(11, 33);
-        task6PosNeg(-700);
-        task7boolean(-50);
-        stringAndNum("teststring ", 5);
-        leapYear();
-        array0to1();
-        arrayX2();
-        array100();
-        sqrArray();
-        initValueArr(5, 777);
+public class HomeWorkL4 {
 
-    }
 
     // Создайте метод printThreeWords(), который при вызове должен отпечатать в столбец три слова: Orange, Banana, Apple.
     //Task#1
+
     public static void printThreeWords() {
         System.out.println();
         System.out.println("          Task#1");
@@ -31,6 +14,8 @@ public class Main {
         System.out.println("Banana");
         System.out.println("Apple");
     }
+
+
 
 
     //Создайте метод checkSumSign(), в теле которого объявите две int переменные a и b,
@@ -51,6 +36,9 @@ public class Main {
 
         }
     }
+
+
+
 
 
     //Создайте метод printColor(), в теле которого задайте int переменную value и инициализируйте ее любым значением.
@@ -145,10 +133,10 @@ public class Main {
         if (number > 0) {
             answer = false;
             System.out.println(number + " positive, answer = " + answer);}
-            else {
-                answer = true;
-                System.out.println(number + " negative, answer = " + answer);}
-        }
+        else {
+            answer = true;
+            System.out.println(number + " negative, answer = " + answer);}
+    }
 
 
 
@@ -220,7 +208,7 @@ public class Main {
         for (int i = 0; i < length; i++) {
             if (array[i] == 0) {
                 array[i] = 1;}
-                else array[i] = 0;
+            else array[i] = 0;
 
             System.out.print(array[i]+ " ");
         }
@@ -239,7 +227,7 @@ public class Main {
 
 
         for (int i = 0; i < 100; i++) {
-                myArray[i] = i+1;
+            myArray[i] = i+1;
 
             System.out.print(myArray[i]+ " ");
         }
@@ -259,9 +247,9 @@ public class Main {
 
 
         for (int i = 0; i < length; i++) {
-           if (array[i]< 6) {
-               array[i] = array[i] * 2;
-           }
+            if (array[i]< 6) {
+                array[i] = array[i] * 2;
+            }
             System.out.print(array[i]+ " ");
         }
     }
@@ -305,6 +293,8 @@ public class Main {
             System.out.println( "el# " + i + " =  " + myArray[i]);
         }
     }
+
+
 
 
 }
