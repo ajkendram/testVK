@@ -1,4 +1,4 @@
-package hw.number.l13;
+package hw.number.l13.words;
 
 import java.util.*;
 
