@@ -13,7 +13,7 @@ public class PageHomeMTS {
         this.driver = driver; }
 
     @FindBy(xpath = "//div[@class='col-12 col-xl-8']//h2[1]")
-    private WebElement BlockTitleName;
+    public WebElement BlockTitleName;
 
     @FindBy(xpath = "//button[text()='Принять']")
     public WebElement acceptButton;
@@ -56,7 +56,38 @@ public class PageHomeMTS {
     @FindBy(xpath = "//input[@placeholder='Сумма']")
     public WebElement sumPlaceholder;
 
+    @FindBy(xpath = "//input[@placeholder='E-mail для отправки чека']")
+    public WebElement mailPlaceholder;
 
+   //dropdown
+
+    @FindBy(xpath = "//button[@class='select__header']")
+    public WebElement dropdownArrow;
+
+    @FindBy(xpath = "//p[contains(text(),'Домашний интернет')]")
+    public WebElement dropdownHomeInet;
+
+    @FindBy(xpath = "//p[contains(text(),'Рассрочка')]")
+    public WebElement dropdownInstallment;
+
+    @FindBy(xpath = "//p[contains(text(),'Задолженность')]")
+    public WebElement dropdownDebt;
+
+    // для Домашний интернет
+
+    @FindBy(xpath = "//input[@id='internet-phone']")
+    public WebElement phoneAbonent;
+
+
+    // для Рассрочка
+
+    @FindBy(xpath = "//input[@id='score-instalment']")
+    public WebElement accNumber;
+
+    // Для Долг
+
+    @FindBy(xpath = "//input[@id='score-arrears']")
+    public WebElement accNumberDebt;
 
 
 
