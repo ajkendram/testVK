@@ -5,18 +5,17 @@ public class Main {
     public static void main(String[] args) {
 
 
-        int fatorial = 1;
+        int faсtorial = 1;
         int number = 5;
 
         for (int i = 1; i <= number; i++){
 
 
-            fatorial = fatorial * i;
-
+            faсtorial = faсtorial * i;
 
         }
 
-        System.out.println(fatorial);
+        System.out.println(faсtorial);
 
     }
 }
