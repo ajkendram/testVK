@@ -20,7 +20,6 @@ public class MainTest {
         return factorial;
     }
 
-
     @Test
     public void testCalculateFactorial() {
         int number = 5;
