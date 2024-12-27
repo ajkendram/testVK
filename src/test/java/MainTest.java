@@ -53,7 +53,7 @@ public class MainTest {
 
 
     @Test
-    public void testVisaIcon() {
+    public void testIconVisa() {
         assertTrue(pageHomeMTS.isVisaImagePresentForAll(pageHomeMTS.visaImage), "No Visa");
     }
 
@@ -83,14 +83,31 @@ public class MainTest {
 
 
 
-    @AfterEach
-    public void tearDown() {
-            driver.quit();
+    @Test
+    public void testNextButton() {
+
+        pageHomeMTS.fillField(pageHomeMTS.phoneField, "297777777");
+        pageHomeMTS.fillField(pageHomeMTS.sumField, "22");
+        pageHomeMTS.fillField(pageHomeMTS.mailField, "slj@sdsd.ru");
+
+        pageHomeMTS.clickControl(pageHomeMTS.nextButton);
 
 
+        String initialUrl = driver.getCurrentUrl();
+        pageHomeMTS.clickControl(pageHomeMTS.detailsLink);
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(initialUrl)));
+
+        String newUrl = driver.getCurrentUrl();
+        assertTrue(!newUrl.equals(initialUrl), "The page URL should change");
     }
 
 
+
+    @AfterEach
+    public void tearDown() {
+            driver.quit();
+    }
 
 }

@@ -36,25 +36,38 @@ public class PageHomeMTS {
     @FindBy(xpath = "(//a[contains(text(),'Подробнее о сервисе')])[1]")
     public WebElement detailsLink;
 
+    @FindBy(xpath = "//input[@id='connection-phone']")
+    public WebElement phoneField;
+
+    @FindBy(xpath = "//input[@id='connection-sum']")
+    public WebElement sumField;
+
+    @FindBy(xpath = "//input[@id='connection-email']")
+    public WebElement mailField;
+
+    @FindBy(xpath = "(//button[@type='submit'][contains(text(),'Продолжить')])[1]")
+    public WebElement nextButton;
 
 
+
+    //public void clickAcceptButton() {
+    //    acceptButton.click();
+    //}
+
+    //public boolean isVisaImagePresent() {
+    //   return visaImage.isDisplayed();
+    //}
+
+
+    public WebElement getAcceptButton() {
+        return acceptButton;
+    }
 
 
     public String getHeaderText() {
         return BlockTitleName.getText().replace("\n", " ");
     }
 
-    //public void clickAcceptButton() {
-    //    acceptButton.click();
-    //}
-
-    public WebElement getAcceptButton() {
-        return acceptButton;
-    }
-
-    //public boolean isVisaImagePresent() {
-     //   return visaImage.isDisplayed();
-    //}
 
     public boolean isVisaImagePresentForAll(WebElement element1) {
         return element1.isDisplayed();
@@ -64,5 +77,9 @@ public class PageHomeMTS {
         element1.click();
     }
 
+    public void fillField(WebElement element, String text) {
+        element.clear();
+        element.sendKeys(text);
+    }
 
 }
