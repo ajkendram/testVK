@@ -54,17 +54,17 @@ public class MainTest {
 
     @Test
     public void testIconVisa() {
-        assertTrue(pageHomeMTS.isVisaImagePresentForAll(pageHomeMTS.visaImage), "No Visa");
+        assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.visaImage), "No Visa");
     }
 
     @Test
     public void testIconAll() {
 
         //для упрощения все в одном тесте
-        assertTrue(pageHomeMTS.isVisaImagePresentForAll(pageHomeMTS.mastercardImage), "No mastercardImage");
-        assertTrue(pageHomeMTS.isVisaImagePresentForAll(pageHomeMTS.mastercardSecureImage), "No mastercardSecureImage");
-        assertTrue(pageHomeMTS.isVisaImagePresentForAll(pageHomeMTS.belImage), "No belImage");
-        assertTrue(pageHomeMTS.isVisaImagePresentForAll(pageHomeMTS.visaImageVer), "No visaImageVer");
+        assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.mastercardImage), "No mastercardImage");
+        assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.mastercardSecureImage), "No mastercardSecureImage");
+        assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.belImage), "No belImage");
+        assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.visaImageVer), "No visaImageVer");
 
     }
 
@@ -102,6 +102,25 @@ public class MainTest {
         String newUrl = driver.getCurrentUrl();
         assertTrue(!newUrl.equals(initialUrl), "The page URL should change");
     }
+
+
+    //16HW
+
+    @Test
+    public void testPlaceholders() {
+        String expectedText = "Номер телефона";
+        assertEquals(pageHomeMTS.getContainsText(pageHomeMTS.phonePlaceholder), expectedText, "The placeholder should contain the text 'phonePlaceholder'");
+
+
+        String expectedTextSum = "Сумма";
+        assertEquals(pageHomeMTS.getContainsText(pageHomeMTS.sumPlaceholder), expectedTextSum, "The placeholder should contain the text 'sumPlaceholder'");
+        System.out.println("Placeholder!!!!!!!!!!!!!!!!!!:" +  pageHomeMTS.sumPlaceholder.getAttribute("placeholder"));
+
+
+
+
+    }
+
 
 
 

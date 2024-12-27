@@ -48,6 +48,17 @@ public class PageHomeMTS {
     @FindBy(xpath = "(//button[@type='submit'][contains(text(),'Продолжить')])[1]")
     public WebElement nextButton;
 
+    //16HW
+
+    @FindBy(xpath = "//input[@placeholder='Номер телефона']")
+    public WebElement phonePlaceholder;
+
+    @FindBy(xpath = "//input[@placeholder='Сумма']")
+    public WebElement sumPlaceholder;
+
+
+
+
 
 
     //public void clickAcceptButton() {
@@ -69,7 +80,7 @@ public class PageHomeMTS {
     }
 
 
-    public boolean isVisaImagePresentForAll(WebElement element1) {
+    public boolean isElementPresent(WebElement element1) {
         return element1.isDisplayed();
     }
 
@@ -80,6 +91,11 @@ public class PageHomeMTS {
     public void fillField(WebElement element, String text) {
         element.clear();
         element.sendKeys(text);
+    }
+
+    public String getContainsText(WebElement element) {
+        String placeholderText = element.getAttribute("placeholder");
+        return placeholderText;
     }
 
 }
