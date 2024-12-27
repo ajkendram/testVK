@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.testng.Assert;
+
 
 public class MainTest {
 
@@ -19,13 +20,15 @@ public class MainTest {
         return factorial;
     }
 
-        @Test
-        public void testCalculateFactorial() {
-            int number = 5;
-            int expectedFactorial = 120;
-            int actualFactorial = calculateFactorial(number);
-            assertEquals(actualFactorial, expectedFactorial);
-        }
+
+    @Test
+    public void testCalculateFactorial() {
+        int number = 5;
+        int expectedFactorial = 120;
+        int actualFactorial = calculateFactorial(number);
+        Assert.assertEquals(actualFactorial, expectedFactorial);
+    }
+
     }
 
 
