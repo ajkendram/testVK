@@ -30,12 +30,13 @@ public class MainTest {
     public void setup() {
         driver = new ChromeDriver();
         pageHomeMTS = new PageHomeMTS(driver);
+        pagePopupService = new PagePopupService(driver);
 
         driver.get("https://www.mts.by/");
         driver.manage().window().maximize();
 
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
             wait.until(ExpectedConditions.elementToBeClickable(pageHomeMTS.getAcceptButton()));
 
             pageHomeMTS.clickControl(pageHomeMTS.acceptButton);
@@ -195,7 +196,7 @@ public class MainTest {
 
 
     @Test
-    public void testNextButtonService() {
+    public void testServiceSummHeader() {
 
         pageHomeMTS.fillField(pageHomeMTS.phoneField, "297777777");
         pageHomeMTS.fillField(pageHomeMTS.sumField, "22");
@@ -203,13 +204,28 @@ public class MainTest {
 
         pageHomeMTS.clickControl(pageHomeMTS.nextButton);
 
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@data-tagging-id='G-7C99PNNT06']")));
+        //driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@data-tagging-id='G-7C99PNNT06']")));
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'BYN')]")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.className("bepaid-iframe")));
 
-        String expectedText = "22";
-        assertEquals(expectedText, pageHomeMTS.getContainsText(pagePopupService.SumHeaderPopup), "The placeholder should contain the text 'expectedText'" + expectedText);
+        //driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
+
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement element = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'BYN')]")));
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!SumHeaderPopup: " + pageHomeMTS.getTextFromElement(pagePopupService.SumHeaderPopupCSS));
+
+
+        String expectedText = "22.00 BYN";
+        assertEquals(expectedText, pageHomeMTS.getTextFromElement(pagePopupService.SumHeaderPopupCSS), "The placeholder should contain the text 'expectedText'");
+
+        //assertEquals(expectedText, pageHomeMTS.getContainsText(pagePopupService.SumHeaderPopup), "The placeholder should contain the text 'expectedText'");
+
+        WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebElement element1 = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@_ngcontent-dhv-c64 and contains(@class, 'disabled') and contains(text(), 'BYN')]")));
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!SumHeaderPopup: " + pageHomeMTS.getTextFromElement(pagePopupService.ButtonPay1));
 
 
 
@@ -219,7 +235,7 @@ public class MainTest {
 
     @AfterEach
     public void tearDown() {
-           // driver.quit();
+            driver.quit();
     }
 
 }

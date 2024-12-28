@@ -129,4 +129,8 @@ public class PageHomeMTS {
         return placeholderText;
     }
 
+    public String getTextFromElement(WebElement element){
+        return element.getText();
+    }
+
 }
