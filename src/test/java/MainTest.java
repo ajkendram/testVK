@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,7 +22,7 @@ public class MainTest {
 
     private WebDriver driver;
     private PageHomeMTS pageHomeMTS;
-
+    private PagePopupService pagePopupService;
 
 
 
@@ -193,9 +194,32 @@ public class MainTest {
 
 
 
+    @Test
+    public void testNextButtonService() {
+
+        pageHomeMTS.fillField(pageHomeMTS.phoneField, "297777777");
+        pageHomeMTS.fillField(pageHomeMTS.sumField, "22");
+        pageHomeMTS.fillField(pageHomeMTS.mailField, "slj@sdsd.ru");
+
+        pageHomeMTS.clickControl(pageHomeMTS.nextButton);
+
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@data-tagging-id='G-7C99PNNT06']")));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'BYN')]")));
+
+        String expectedText = "22";
+        assertEquals(expectedText, pageHomeMTS.getContainsText(pagePopupService.SumHeaderPopup), "The placeholder should contain the text 'expectedText'" + expectedText);
+
+
+
+    }
+
+
+
     @AfterEach
     public void tearDown() {
-            driver.quit();
+           // driver.quit();
     }
 
 }
