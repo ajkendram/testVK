@@ -37,6 +37,10 @@ public class PagePopupService {
     @FindBy(xpath =  "//input[contains(@_ngcontent-rfl-c61, '') and @formcontrolname='holder']")
     public WebElement nameField;
 
+    @FindBy(xpath =  "//span[contains(text(),':')]")
+    public WebElement lablePhoneNumber;
+
+
 
 
 
