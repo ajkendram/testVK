@@ -222,11 +222,25 @@ public class MainTest {
 
         //assertEquals(expectedText, pageHomeMTS.getContainsText(pagePopupService.SumHeaderPopup), "The placeholder should contain the text 'expectedText'");
 
-        WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebElement element1 = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@_ngcontent-dhv-c64 and contains(@class, 'disabled') and contains(text(), 'BYN')]")));
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!SumHeaderPopup: " + pageHomeMTS.getTextFromElement(pagePopupService.ButtonPay1));
 
+        pageHomeMTS.fillField(pagePopupService.CartNumberField, "4111 1111 1111 1111");
+        pageHomeMTS.fillField(pagePopupService.yymmField, "1125");
+        pageHomeMTS.fillField(pagePopupService.csvField, "222");
+
+        pageHomeMTS.clickControl(pagePopupService.nameField);
+
+
+        pageHomeMTS.fillField(pagePopupService.nameField, "name mame");
+
+
+        //WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(4));
+        //WebElement element1 = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@_ngcontent-dhv-c64 and contains(@class, 'disabled') and contains(text(), 'BYN')]")));
+
+        System.out.println("2222222!!!!!!!!!SumHeaderPopup: " + pageHomeMTS.getTextFromElement(pagePopupService.ButtonPayXpath));
+
+        String expectedTextButton = "Оплатить 22.00 BYN";
+        assertEquals(expectedTextButton, pageHomeMTS.getTextFromElement(pagePopupService.ButtonPayXpath), "The placeholder should contain the text 'expectedText'");
 
 
     }
