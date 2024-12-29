@@ -68,7 +68,7 @@ public class MainTest {
     @Test
     public void testIconAll() {
 
-        //для упрощения все в одном тесте
+        //для упрощения все иконки платежных систем в одном тесте
         assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.mastercardImage), "No mastercardImage");
         assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.mastercardSecureImage), "No mastercardSecureImage");
         assertTrue(pageHomeMTS.isElementPresent(pageHomeMTS.belImage), "No belImage");
@@ -261,6 +261,57 @@ public class MainTest {
 
     }
 
+
+    @Test
+    public void testCardField() {
+
+        String phoneExpected = "Оплата: Услуги связи Номер:375297777777";
+
+        pageHomeMTS.fillField(pageHomeMTS.phoneField, "297777777");
+        pageHomeMTS.fillField(pageHomeMTS.sumField, "22");
+        pageHomeMTS.fillField(pageHomeMTS.mailField, "slj@sdsd.ru");
+
+        pageHomeMTS.clickControl(pageHomeMTS.nextButton);
+
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.className("bepaid-iframe")));
+
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement element = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'BYN')]")));
+
+        String textExpected = "Номер карты";
+
+        assertEquals(phoneExpected, pageHomeMTS.getTextFromElement(pagePopupService.lablePhoneNumber), "The placeholder should contain the text 'textExpected'");
+
+    }
+
+
+    @Test
+    public void testCardsIcon() {
+
+        String phoneExpected = "Оплата: Услуги связи Номер:375297777777";
+
+        pageHomeMTS.fillField(pageHomeMTS.phoneField, "297777777");
+        pageHomeMTS.fillField(pageHomeMTS.sumField, "22");
+        pageHomeMTS.fillField(pageHomeMTS.mailField, "slj@sdsd.ru");
+
+        pageHomeMTS.clickControl(pageHomeMTS.nextButton);
+
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.className("bepaid-iframe")));
+
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement element = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'BYN')]")));
+
+
+        assertTrue(pageHomeMTS.isElementPresent(pagePopupService.iconVisaFrame), "No iconVisaFrame");
+        assertTrue(pageHomeMTS.isElementPresent(pagePopupService.iconMasterFrame), "No iconMasterFrame");
+        assertTrue(pageHomeMTS.isElementPresent(pagePopupService.iconBelFrame), "No iconBelFrame");
+        assertTrue(pageHomeMTS.isElementPresent(pagePopupService.iconMaestroFrame), "No iconMaestroFrame");
+
+    }
 
 
     @AfterEach

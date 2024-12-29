@@ -40,6 +40,19 @@ public class PagePopupService {
     @FindBy(xpath =  "//span[contains(text(),':')]")
     public WebElement lablePhoneNumber;
 
+    @FindBy(xpath =  "//img[@src='assets/images/payment-icons/card-types/visa-system.svg']")
+    public WebElement iconVisaFrame;
+
+    @FindBy(xpath =  "//img[@src='assets/images/payment-icons/card-types/mastercard-system.svg']")
+    public WebElement iconMasterFrame;
+
+    @FindBy(xpath =  "//img[@src='assets/images/payment-icons/card-types/belkart-system.svg']")
+    public WebElement iconBelFrame;
+
+    @FindBy(xpath =  "//img[@src='assets/images/payment-icons/card-types/maestro-system.svg']")
+    public WebElement iconMaestroFrame;
+
+
 
 
 
