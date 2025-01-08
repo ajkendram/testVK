@@ -28,41 +28,41 @@ public class MainApiTest {
 
 //WebDriver driver = new ChromeDriver();
 
-@Test
+    @Test
 
- public void   getTest () {
+    public void getTest() {
 
-    given()
-            .baseUri("https://postman-echo.com")
-            .when()
-            .get("/get")
-            .then()
-            .assertThat()
-            .statusCode(200)
-            .log().all();
-
-
-    given()
-            .baseUri("https://postman-echo.com")
-            .when()
-            .get("/get?foo1=bar1&foo2=bar2")
-            .then()
-            .assertThat()
-            .statusCode(200)
-            .body("args.foo1", equalTo("bar1"))
-            .body("args.foo2", equalTo("bar2"))
-            .log().all();
+        given()
+                .baseUri("https://postman-echo.com")
+                .when()
+                .get("/get")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .log().all();
 
 
-}
+        given()
+                .baseUri("https://postman-echo.com")
+                .when()
+                .get("/get?foo1=bar1&foo2=bar2")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("args.foo1", equalTo("bar1"))
+                .body("args.foo2", equalTo("bar2"))
+                .log().all();
+
+
+    }
 
     @Test
-    public void   postRawTest () {
+    public void postRawTest() {
         given()
                 .baseUri("https://postman-echo.com")
                 .header("Content-Type", "application/json")
 
-                .body("{\"test11\": \"value111\"}")
+                .body("{\"test11\": \"value\"}")
                 .when()
                 .post("/post")
                 .then()
@@ -70,14 +70,9 @@ public class MainApiTest {
                 .statusCode(200)
                 .log().all()
 
-                .body("data", equalTo("This is expected to be sent back as part of response body.м"));
-
-                //.body("test",  equalTo("value"))
-                //.body("url", equalTo("value111"))
+                .body("data.test11", equalTo("value"));
 
     }
-
-
 
 
     @Test
@@ -96,7 +91,7 @@ public class MainApiTest {
                 .body("form.foo1", equalTo("bar1"))
                 .body("form.foo2", equalTo("bar2"));
 
-}
+    }
 
     @Test
     public void putTest() {
@@ -106,10 +101,30 @@ public class MainApiTest {
                 .put("https://postman-echo.com/put")
                 .then()
                 .log().all()
-                .statusCode(200) .body("data", equalTo("This is expected to be sent back as part of response body."));
-}
+                .statusCode(200).body("data", equalTo("This is expected to be sent back as part of response body."));
+    }
+
+    @Test
+    public void patchTest() {
+        RestAssured.
+                given().
+                contentType(ContentType.TEXT)
+                .body("This is expected to be sent back as part of response body.")
+                .patch("https://postman-echo.com/patch")
+                .then().log().all().statusCode(200)
+                .body("data", equalTo("This is expected to be sent back as part of response body."));
+
+    }
 
 
-
-
+    @Test
+    public void deleteTest() {
+        RestAssured
+                .given()
+                .contentType(ContentType.TEXT)
+                .body("This is expected to be sent back as part of response body.")
+                .delete("https://postman-echo.com/delete")
+                .then().log().all().statusCode(200)
+                .body("data", equalTo("This is expected to be sent back as part of response body."));
+    }
 }
